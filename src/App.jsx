@@ -5,10 +5,10 @@ import Home from './components/Home/Home.jsx'
 import Cities from './components/Cities/Cities.jsx'
 const router = createBrowserRouter([
   {
-    path: '/cities',
+    path: 'mytinerary-juanCruzEspasandin/cities',
     element: <Cities/>
   },{
-    path: '/',
+    path: 'mytinerary-juanCruzEspasandin/',
     element: <Home/>
   }
 ])
