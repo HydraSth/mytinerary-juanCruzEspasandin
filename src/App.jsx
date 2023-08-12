@@ -1,13 +1,15 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createHashRouter } from 'react-router-dom'
 import './assets/normalize.css'
 import './assets/tailwind.css'
 import Home from './components/Home/Home.jsx'
 import Cities from './components/Cities/Cities.jsx'
-const router = createBrowserRouter([
+
+const router = createHashRouter([
   {
     path: '/cities',
     element: <Cities/>
-  },{
+  },
+  {
     path: '/',
     element: <Home/>
   }
@@ -19,7 +21,7 @@ function App() {
           <Home/>
           <Cities></Cities>
         </RouterProvider>
-      </div>
+    </div>
   )
 }
 

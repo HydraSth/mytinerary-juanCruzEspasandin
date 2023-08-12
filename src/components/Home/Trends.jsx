@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Citys from './Citys';
+import Card from './Cards';
 export default function Trends(){
   const [index,setIndex]=useState(0);
   const cityArray=[
@@ -24,7 +24,7 @@ export default function Trends(){
       {name:"Bogota",link:"",photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcWU4psfygesGxGuRkU8gjJEUU9pawQtvIEQDb4cENqQ&s"} 
     ]
   ]
-  const [citys,setCity]= useState([cityArray[0][0],cityArray[0][1]]);
+  const [citys,setCity]= useState([cityArray[0][0],cityArray[0][1],cityArray[0][2],cityArray[0][3]]);
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,7 +36,11 @@ export default function Trends(){
     };
   }, [citys]);
 
-  const handleNewCity= ()=>{
+  const handlePrevCity= ()=>{
+    setCity(cityArray[index])
+    index==0?setIndex(2):setIndex(index-1);
+  }
+  const handleNextCity= ()=>{
     setCity(cityArray[index])
     index==2?setIndex(0):setIndex(index+1);
   }
@@ -50,15 +54,15 @@ export default function Trends(){
     <div>
         <h4 className='flex place-content-center mb-0 font-semibold text-primary opacity-30'>Trending Mytinerarys</h4>
       <div className='flex mt-0 place-content-center'>
-        <button ><i className="bi text-primary bi-caret-left-fill"></i></button>
         <div className='flex flex-wrap lg:w-4/5 place-content-center w-3/4'>
-            {
-              citys.map((city) => (
-                <Citys key={`${city.name+Math.random()}`} name={`${city.name}`} photo={`${city.photo}`}/>
-              ))
-            }
+          <button onClick={()=>handlePrevCity()}><i className="bi text-primary bi-caret-left-fill"></i></button>
+              {
+                citys.map((city) => (
+                  <Card key={`${city.name+Math.random()}`} name={`${city.name}`} photo={`${city.photo}`}/>
+                ))
+              }
+          <button onClick={()=>handleNextCity()}><i className="bi text-primary bi-caret-right-fill"></i></button>
         </div>
-        <button onClick={()=>handleNewCity()}><i className="bi text-primary bi-caret-right-fill"></i></button>
       </div>
     </div>
     </>

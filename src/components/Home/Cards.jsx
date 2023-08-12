@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Citys({name, link,photo}){
+export default function Card({name, link,photo}){
   return(
         <div className='md:basis-1/3 lg:basis-0 p-3 inline-block'> 
             <button style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover'}} className='hover:border-primary hover:border-2 rounded mx-auto basis-1/2 flex flex-col place-content-end w-40 h-40 drop-shadow-lg'>

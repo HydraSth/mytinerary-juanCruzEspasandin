@@ -2,10 +2,10 @@
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {
+    extend:{
       colors: {
         'primary': '#4f46e5',
-        'secondary': '#ebebeb',
+        'secondary': '#ebebeb'
       },
       height: {
         'footer':'10%',

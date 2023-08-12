@@ -4,7 +4,7 @@ function Header (){
 
   return(
     <>
-      <header className='sm:flex hidden mt-5'>
+      <header className='z-10 sm:flex hidden mt-5'>
         <div className='w-full flex place-content-around'> 
           <h3 className='my-auto font-bold'>My Tinerary</h3>
           <section>
