@@ -1,11 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Card({name, link,photo}){
+export default function Card({name,photo,country}){
   return(
-        <div className='md:basis-1/3 lg:basis-0 p-3 inline-block'> 
-            <button style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover'}} className='hover:border-primary hover:border-2 rounded mx-auto basis-1/2 flex flex-col place-content-end w-40 h-40 drop-shadow-lg'>
-                    <h6 className='font-bold text-secondary opacity-100 bg-primary shadow-sm w-full rounded-t-2xl text-lg lg:text-lg'>{name}</h6>
-            </button>
+        <div style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover',borderRadius:'10px'}} className='z-10 mx-2 basis-1/2 drop-shadow-lg md:basis-1/3 lg:basis-0 inline-block'> 
+            <div style={{ background:'linear-gradient(180deg, rgba(0,0,0,0.6491596638655462) 0%, rgba(0,0,0,0) 100%)',borderRadius:'10px'}} className='flex place-content-between flex-col w-60 h-40'>
+              <section className='p-2 ps-3 flex-col'>
+                  <h6 className='text-white lg:text-md'>{name}</h6>
+                  <h6 className="bi bi-geo-alt-fill text-xs text-slate-50"> {country}</h6>
+              </section>
+              <div className='m-2 bg-primary text-white w-fit px-2 py-1 rounded-md'>
+                <Link className='text-sm font-medium' to={`/cities/${name}`}>View more</Link>
+              </div>
+            </div>
         </div>
   )
 }

@@ -1,13 +1,18 @@
 import { RouterProvider, createHashRouter } from 'react-router-dom'
 import './assets/normalize.css'
 import './assets/tailwind.css'
-import Home from './components/Home/Home.jsx'
-import Cities from './components/Cities/Cities.jsx'
+import Cities from './Layouts/Cities'
+import Home from './Layouts/Home'
+import Details from './Layouts/Details'
 
 const router = createHashRouter([
   {
     path: '/cities',
     element: <Cities/>
+  },
+  {
+    path: '/cities/:cityName',
+    element: <Details/>
   },
   {
     path: '/',
@@ -19,7 +24,8 @@ function App() {
     <div className=' flex flex-col min-h-screen place-content-between bg-secondary'>
         <RouterProvider router={router}>
           <Home/>
-          <Cities></Cities>
+          <Details/>
+          <Cities/>
         </RouterProvider>
     </div>
   )

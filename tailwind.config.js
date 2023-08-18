@@ -4,6 +4,8 @@ export default {
   theme: {
     extend:{
       colors: {
+        'theme':'#fff',
+        'inverse-theme':'#4b4b4b',
         'primary': '#4f46e5',
         'secondary': '#ebebeb'
       },

@@ -4,9 +4,9 @@ function Header (){
 
   return(
     <>
-      <header className='z-10 sm:flex hidden mt-5'>
-        <div className='w-full flex place-content-around'> 
-          <h3 className='my-auto font-bold'>My Tinerary</h3>
+      <header id="Header" className='bg-theme z-10 py-3 sm:flex hidden'>
+        <div className='w-full flex place-content-around text-inverse-theme'> 
+          <img id="Logo" src="src\assets\Logo-01.png" className='h-full max-w-xs object-contain'/>
           <section>
             <Link to={'/'} className='mx-3 font-bold'>Home</Link>
             <Link to={'/cities'} className='mx-3 font-bold'>Cities</Link>
