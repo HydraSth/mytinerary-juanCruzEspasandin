@@ -11,7 +11,7 @@
 }
 
 #Home{
-    background-image: url(./bg-home1.jpg);
+    background-image: url(./public/assets/bg-home.jpg);
     background-size: cover;
     background-position:bottom;
     background-color: rgba(20, 14, 125, 0.235);

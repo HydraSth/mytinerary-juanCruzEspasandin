@@ -31,10 +31,10 @@ export default function Menu (){
             </button>
             <section id='section' className='hidden'>
                 <h3 className='font-bold'>Menu</h3>
-                <Link to={'/'} className='font- my-1'>Home</Link>
-                <Link to={'/cities'} className=' font- my-1'>Cities</Link>
-                <Link to={'/login'} className=' font- my-1'>Login</Link>
-                <Link to={'/aboutus'} className=' font- my-1'>About Us</Link>
+                <Link to={'/'} className='hover:font-bold font- my-1'>Home</Link>
+                <Link to={'/cities'} className='hover:font-bold  font- my-1'>Cities</Link>
+                <Link to={'/login'} className='hover:font-bold  font- my-1'>Login</Link>
+                <Link to={'/aboutus'} className='hover:font-bold  font- my-1'>About Us</Link>
             </section>
         </div>
     </>
