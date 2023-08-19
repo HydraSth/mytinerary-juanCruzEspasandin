@@ -9,9 +9,9 @@ import Search from '../components/Cities/Search.jsx'
 export default function Cities(){
   return (
     <>
+        <Menu/>
         <div>
         <Header/>
-        <Menu/>
         <Hero/>
         </div>
         <Search/>
