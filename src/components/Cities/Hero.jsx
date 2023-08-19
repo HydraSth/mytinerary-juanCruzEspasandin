@@ -12,7 +12,7 @@ export default function Hero(){
     }
     return (
     <>
-        <div style={{backgroundImage:`url(./public/assets/bg-search.jpg)`}} className='w-full h-80 absolute top-0 bg-cover bg-center place-content-center-z-5'>
+        <div style={{backgroundImage:`url(assets/bg-search.jpg)`}} className='w-full h-80 absolute top-0 bg-cover bg-center place-content-center-z-5'>
             <div style={{background:`linear-gradient(0deg, rgb(235, 235, 235) 0%, rgba(235, 235, 235, 0) 100%)`}} className='w-full h-full flex justify-center items-center'>
                 <section className='color-cities flex flex-row items-center place-content-between text-theme'>
                     <section className='flex flex-col w-1/3'>

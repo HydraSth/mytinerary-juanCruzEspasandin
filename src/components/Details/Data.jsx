@@ -36,7 +36,7 @@ export default function Data(){
 				<section className="flex flex-col place-items-center mt-10">
 					<section className="flex flex-col place-items-center text-justify w-2/6 bg-theme rounded-lg drop-shadow-md py-5">
 						<h2 className="font-bold">Intineraries availables</h2>
-						<img src="public\assets\ico-details.png" className="w-1/6"/>
+						<img src="assets/ico-details.png" className="w-1/6"/>
 					</section>
 				</section>
 			</main>
