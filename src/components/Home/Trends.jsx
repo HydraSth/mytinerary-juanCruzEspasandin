@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import Card from "./Cards"
+import Card from "../Cards"
 import { allCities } from "../../services/Events"
 export default function Trends() {
 	const [index, setIndex] = useState(0)
@@ -37,26 +37,27 @@ export default function Trends() {
 
 	return (
 		<>
-			<div>
-				<h4 className="flex place-content-center mb-0 font-semibold text-theme">
+			<div className="bg-theme md:bg-transparent md:mt-0 sm:mt-14">
+				<h4 className="flex place-content-center mt-10 md:mt-0 mb-0 font-semibold sm:text-inverse-theme md:text-theme">
 					Trending Mytinerarys
 				</h4>
 				<div className="flex mt-5 place-content-center">
-					<div className="flex flex-wrap lg:w-full place-content-center w-3/4">
-						<button onClick={() => handlePrevCity()}>
-							<i className="bi text-theme bi-caret-left-fill"></i>
-						</button>
+					<button onClick={() => handlePrevCity()}>
+							<i className="bi text-inverse-theme md:text-theme bi-caret-left-fill"></i>
+					</button>
+					<div className="flex flex-wrap place-content-center w-3/4 gap-5">
 						{actualCities.map((city) => (
 							<Card
 								key={`${city.name + Math.random()}`}
 								name={`${city.name}`}
 								photo={`${city.photo}`}
+								country={`${city.country}`}
 							/>
 						))}
-						<button onClick={() => handleNextCity()}>
-							<i className="bi text-theme bi-caret-right-fill"></i>
-						</button>
 					</div>
+					<button onClick={() => handleNextCity()}>
+						<i className="bi text-inverse-theme md:text-theme bi-caret-right-fill"></i>
+					</button>
 				</div>
 			</div>
 		</>

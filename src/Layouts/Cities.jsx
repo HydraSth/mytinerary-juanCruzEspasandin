@@ -4,13 +4,17 @@ import Menu from '../components/Menu.jsx'
 import Hero from '../components/Cities/Hero.jsx'
 import Footer from '../components/Footer.jsx'
 import '../assets/Hero.css'
+import Search from '../components/Cities/Search.jsx'
 
 export default function Cities(){
   return (
     <>
+        <div>
         <Header/>
         <Menu/>
         <Hero/>
+        </div>
+        <Search/>
         <Footer/>
     </>
   )

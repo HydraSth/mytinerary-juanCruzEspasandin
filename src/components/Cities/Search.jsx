@@ -1,5 +1,5 @@
 import React from "react"
-import Card from "./Cards"
+import Card from "../Cards"
 import { useState, useEffect } from "react"
 import { allCities } from "../../services/Events.js"
 import ErrorCard from "../ErrorCard"
@@ -42,8 +42,8 @@ export default function Search() {
 	}, [filter])
 
 	return (
-		<>
-			<div className="flex place-content-center mt-48">
+		<div className="flex flex-col place-content-center gap-5 align-items-center align-middle">
+			<div className="flex place-content-center">
 				<button>
 					<i
 						id="icon"
@@ -51,6 +51,7 @@ export default function Search() {
 					></i>
 				</button>
 				<input
+					autoComplete="off"
 					id="city-search"
 					onChange={() => handleInput()}
 					className="h-10 ps-10 flex my-auto mt-3 drop-shadow-md rounded-lg font-normal"
@@ -60,7 +61,7 @@ export default function Search() {
 			</div>
 			<div
 				id="search-container"
-				className="flex self-center pb-3 w-5/6 overflow-x-scroll"
+				className="flex gap-4 h-80 sm:h-auto sm:gap-0 flex-col sm:flex-row self-center pb-3 sm:w-5/6 overflow-x-scroll"
 			>
 				{
 					cities.length == 0 ?
@@ -75,6 +76,6 @@ export default function Search() {
 					))
 				}
 			</div>
-		</>
+		</div>
 	)
 }

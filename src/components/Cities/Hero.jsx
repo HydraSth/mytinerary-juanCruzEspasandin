@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../assets/Hero.css'
-import Search from './Search';
+
 export default function Hero(){
     const handleInput=()=>{
         const search_input= document.getElementById('city-search');
@@ -12,9 +12,9 @@ export default function Hero(){
     }
     return (
     <>
-        <div style={{backgroundImage:`url(assets/bg-search.jpg)`}} className='w-full h-80 absolute top-0 bg-cover bg-center place-content-center-z-5'>
+        <div style={{backgroundImage:`url(assets/bg-search.jpg)`}} className='w-full h-80 top-0 bg-cover bg-right md:bg-center place-content-center-z-5'>
             <div style={{background:`linear-gradient(0deg, rgb(235, 235, 235) 0%, rgba(235, 235, 235, 0) 100%)`}} className='w-full h-full flex justify-center items-center'>
-                <section className='color-cities flex flex-row items-center place-content-between text-theme'>
+                <section className='color-cities flex flex-row items-center place-content-center md:place-content-between text-theme gap-5'>
                     <section className='flex flex-col w-1/3'>
                         <h5 className='font-bold drop-shadow-md text-2xl'>Discover new places</h5>
                         <p className='drop-shadow-md text-lg font-medium'>Collection of the most beatiful places and experiences</p>
@@ -26,7 +26,6 @@ export default function Hero(){
                 </section>
             </div>
         </div>
-        <Search/>
     </>
   )
 }

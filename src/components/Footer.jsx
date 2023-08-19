@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Footer (){
 
   return(
-    <div className='flex place-content-between flex-col sm:flex-row opacity-70  m-o p-0 text-xs font-bold text-inverse-theme'>
+    <div className='flex place-content-between flex-col sm:flex-row opacity-70 m-o p-0 text-xs font-bold text-inverse-theme'>
       <h6 className='m-3'>My Tinerary © 2022</h6>
       <section className='m-3'>
         <Link className="hover:text-theme mx-1" to="/">Home</Link>

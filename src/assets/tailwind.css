@@ -21,6 +21,13 @@ body{
     overflow-x: hidden;
 }
 
+@media screen and (min-width: 768px) {
+    body{
+        background-color: #090a18;
+    }
+}
+
 #Logo{
     width: 80px;
 }
+
