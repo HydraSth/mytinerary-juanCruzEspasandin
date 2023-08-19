@@ -1,3 +1,8 @@
-# Primer Sprint	
+# Segundo sprint	
 
-Para ver acceder a una vista previa puede ser usado este link **https://hydrasth.github.io/mytinerary-juanCruzEspasandin/**
+Conexion con mongo
+Front responsive
+Stack MERN
+
+Vista previa
+**https://hydrasth.github.io/mytinerary-juanCruzEspasandin/**

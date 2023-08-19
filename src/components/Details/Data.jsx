@@ -23,7 +23,7 @@ export default function Data(){
 		<>
 			<main className="min-h-screen">
 				<div className="min-h-96 flex flex-row py-10 md:m-0 md:flex-col place-content-center bg-cover bg-center bg-primary bg-blend-multiply" style={{backgroundImage: `url(${city.photo})`}}>
-					<Link className="absolute sm:left-5 transition-all duration-300 sm:top-16 sm:bottom-auto left-5 bottom-16 rounded-md ps-1 py-3 pe-3 sm:w-2/12 text-center hover:bg-primary hover:text-theme bg-theme" to={'/cities'}>
+					<Link className="absolute z-20 sm:left-5 transition-all duration-300 sm:top-16 sm:bottom-auto left-5 bottom-16 rounded-md ps-1 py-3 pe-3 sm:w-2/12 text-center hover:bg-primary hover:text-theme bg-theme" to={'/cities'}>
 						<i class="bi bi-arrow-left-short me-2"></i>
 						Back to cities
 					</Link>
