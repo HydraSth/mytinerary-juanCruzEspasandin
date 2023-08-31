@@ -45,7 +45,7 @@ export default function Trends() {
 					<button onClick={() => handlePrevCity()}>
 							<i className="bi text-inverse-theme md:text-theme bi-caret-left-fill"></i>
 					</button>
-					<div className="flex flex-wrap place-content-center w-3/4 gap-5">
+					<div className="flex flex-wrap place-content-center w-3/4 gap-2">
 						{actualCities.map((city) => (
 							<Card
 								key={`${city.name + Math.random()}`}

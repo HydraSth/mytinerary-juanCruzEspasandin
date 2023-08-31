@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const Citie = async (name) => {
+export default async function getCity(name){
     try {
         const city = await axios.get(`http://localhost:3000/api/city?name=${name}`);
         return city.data.city;

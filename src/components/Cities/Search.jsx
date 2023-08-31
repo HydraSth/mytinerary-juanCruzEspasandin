@@ -1,18 +1,23 @@
 import React from "react"
 import Card from "../Cards"
 import { useState, useEffect } from "react"
-import { allCities } from "../../services/Events.js"
+import getCity from "../../services/Event.js"
+import {allCities} from "../../services/Events.js"
 import ErrorCard from "../ErrorCard"
 
 export default function Search() {
-	const [fectchedCities, setfectchedCities] = useState([{ name: "loading" }])
 	const [cities, setCities] = useState([{ name: "loading" }])
+	const [filter, setFilter] = useState("")
 
 	const fetchData = async () => {
 		try {
 			const fetchedCities = await allCities()
-			setCities(fetchedCities.cities)
-			setfectchedCities(fetchedCities.cities)
+			if(filter.length != ""){
+				const fetchedCity = await getCity(filter)
+				setCities(fetchedCity)
+			}else{
+				setCities(fetchedCities.cities)
+			}
 		} catch (error) {
 			console.log(error)
 		}
@@ -22,7 +27,6 @@ export default function Search() {
 		fetchData()
 	}, [])
 
-	const [filter, setFilter] = useState("")
 	const handleInput = () => {
 		const search_input = document.getElementById("city-search")
 		const input_value = search_input.value
@@ -30,15 +34,8 @@ export default function Search() {
 		setFilter(value_without_space)
 	}
 
-	function citys_filtered() {
-		const patron = new RegExp(`^${filter}`)
-		return fectchedCities.filter((city) => {
-			return city.name.toLowerCase().match(patron)
-		})
-	}
-
 	useEffect(() => {
-		setCities(citys_filtered())
+		fetchData()
 	}, [filter])
 
 	return (
@@ -61,7 +58,7 @@ export default function Search() {
 			</div>
 			<div
 				id="search-container"
-				className="flex gap-4 h-80 sm:h-auto sm:gap-0 flex-col sm:flex-row self-center pb-3 sm:w-5/6 overflow-x-scroll"
+				className="flex gap-4 h-80 sm:h-auto flex-col sm:flex-row self-center pb-3 sm:w-5/6 overflow-x-scroll"
 			>
 				{
 					cities.length == 0 ?

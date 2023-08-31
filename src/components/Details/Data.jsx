@@ -1,6 +1,8 @@
 import { Link, useParams } from "react-router-dom"
 import React, { useState, useEffect } from "react"
-import { Citie } from "../../services/Event"
+import Citie from "../../services/Event"
+import '../../assets/data.css'
+import Itineraries from "./Itineraries"
 
 export default function Data(){
 	const [city, setCity] = useState('')
@@ -9,7 +11,6 @@ export default function Data(){
 		try {
 			const cities = await Citie(cityName)
 			setCity(cities[0])
-			console.log(cities);
 		} catch (error) {
 			console.log(error)
 		}
@@ -19,12 +20,13 @@ export default function Data(){
 		fetchData()
 	},[])
 
+
 	return (
 		<>
 			<main className="min-h-screen">
 				<div className="min-h-96 flex flex-row py-10 md:m-0 md:flex-col place-content-center bg-cover bg-center bg-primary bg-blend-multiply" style={{backgroundImage: `url(${city.photo})`}}>
 					<Link className="absolute z-20 sm:left-5 transition-all duration-300 sm:top-16 sm:bottom-auto left-5 bottom-16 rounded-md ps-1 py-3 pe-3 sm:w-2/12 text-center hover:bg-primary hover:text-theme bg-theme" to={'/cities'}>
-						<i class="bi bi-arrow-left-short me-2"></i>
+						<i className="bi bi-arrow-left-short me-2"></i>
 						Back to cities
 					</Link>
 					<section className="flex align-middle flex-col place-items-center">
@@ -34,10 +36,11 @@ export default function Data(){
 					</section>
 				</div>
 				<section className="flex flex-col place-items-center mt-10">
-					<section className="flex flex-col place-items-center text-justify w-3/6 bg-theme rounded-lg drop-shadow-md py-5">
-						<h2 className="font-bold">Intineraries availables</h2>
-						<img src="assets/ico-details.png" className="w-1/6"/>
+
+					<section className="flex flex-row w-4/6 bg-theme rounded-lg drop-shadow-md py-5 place-content-center">
+						<Itineraries cityName={cityName}/>
 					</section>
+
 				</section>
 			</main>
 		</>
