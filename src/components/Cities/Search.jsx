@@ -4,19 +4,32 @@ import { useState, useEffect } from "react"
 import getCity from "../../services/Event.js"
 import {allCities} from "../../services/Events.js"
 import ErrorCard from "../ErrorCard"
+//Imports para redux
+import axios from "axios"
+import { useDispatch, useSelector } from "react-redux"
+import filterActions from "../../redux/actions/filter_action"
+import citiesActions from "../../redux/actions/cities_action"
 
 export default function Search() {
-	const [cities, setCities] = useState([{ name: "loading" }])
-	const [filter, setFilter] = useState("")
+	const dipatch = useDispatch()
+	const cities_reducer = useSelector((state) => state.cities_reducer.cities);
+	const filter_reducer = useSelector((state) => state.filter_reducer.filter);
 
 	const fetchData = async () => {
 		try {
-			const fetchedCities = await allCities()
-			if(filter.length != ""){
-				const fetchedCity = await getCity(filter)
-				setCities(fetchedCity)
+			if(filter_reducer.length != ""){
+				const fetchedCity = await getCity(filter_reducer)
+				dipatch(citiesActions.add_city({cities:fetchedCity}))
 			}else{
-				setCities(fetchedCities.cities)
+				try {
+					axios.get("http://localhost:3000/api/dbCities")
+					.then((res) => {
+						dipatch(citiesActions.add_city(res.data))
+					})
+				} catch (error) {
+					console.log(error)
+				}
+
 			}
 		} catch (error) {
 			console.log(error)
@@ -31,12 +44,12 @@ export default function Search() {
 		const search_input = document.getElementById("city-search")
 		const input_value = search_input.value
 		const value_without_space = input_value.toLowerCase().replace(/\s/g, "")
-		setFilter(value_without_space)
+		dipatch(filterActions.modify_filter(value_without_space))
 	}
 
 	useEffect(() => {
 		fetchData()
-	}, [filter])
+	}, [filter_reducer])
 
 	return (
 		<div className="flex flex-col place-content-center gap-5 align-items-center align-middle">
@@ -61,9 +74,10 @@ export default function Search() {
 				className="flex gap-4 h-80 sm:h-auto flex-col sm:flex-row self-center pb-3 sm:w-5/6 overflow-x-scroll"
 			>
 				{
-					cities.length == 0 ?
+					cities_reducer.length == 0 
+					?
 					<ErrorCard/> 
-					: cities.map((city) => (
+					: cities_reducer.map((city) => (
 						<Card
 							key={`${city.name + Math.random()}`}
 							name={`${city.name}`}

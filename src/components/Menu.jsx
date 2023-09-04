@@ -25,7 +25,7 @@ export default function Menu (){
 
   return(
     <>
-        <div id='container' className='z-10 absolute right-0 h-full w-3/12 lg:w-1/12 text-center drop-shadow-lg flex-inline flex-col pt-2'>
+        <div id='container' className='z-10 animate-slide-i absolute right-0 h-full w-1/12 text-center drop-shadow-lg flex flex-col pt-3'>
             <button id='button' className='hover:scale-150 transition-transform text-inverse-theme mb-6' onClick={()=>handleIconClick()}>
                 <i id="icon" className="text-lg bi bi-caret-left-fill"></i>
             </button>

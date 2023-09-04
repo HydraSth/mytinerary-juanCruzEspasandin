@@ -6,6 +6,7 @@ import Trends from '../components/Home/Trends.jsx';
 import Footer from '../components/Footer.jsx'
 
 export default function Home(){
+
   return (
     <>
     <div id='Home' className='flex flex-col h-screen place-content-between'>

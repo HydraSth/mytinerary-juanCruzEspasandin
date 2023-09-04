@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react"
 import Card from "../Cards"
 import { allCities } from "../../services/Events"
+import { useDispatch, useSelector } from "react-redux"
+import citiesActions from "../../redux/actions/cities_action"
+import axios from "axios"
+
 export default function Trends() {
 	const [index, setIndex] = useState(0)
-	const [actualCities, setActualCities] = useState([])
+	const dipatch = useDispatch()
+	const cities_reducer = useSelector((state) => state.cities_reducer).cities.slice(index, index + 4);
+
 	const fetchData = async () => {
 		try {
-			const { cities } = await allCities()
-			const primerasciudades = await cities.slice(index, index + 4)
-			setActualCities(primerasciudades)
+			axios.get("http://localhost:3000/api/dbCities")
+			.then((res) => {
+				dipatch(citiesActions.add_city(res.data))
+			})
 		} catch (error) {
 			console.log(error)
 		}
@@ -26,7 +33,7 @@ export default function Trends() {
 		return () => {
 			clearInterval(interval)
 		}
-	}, [actualCities])
+	}, [cities_reducer])
 
 	const handlePrevCity = () => {
 		index == 0 ? setIndex(8) : setIndex(index - 4)
@@ -46,7 +53,7 @@ export default function Trends() {
 							<i className="bi text-inverse-theme md:text-theme bi-caret-left-fill"></i>
 					</button>
 					<div className="flex flex-wrap place-content-center w-3/4 gap-2">
-						{actualCities.map((city) => (
+						{cities_reducer.map((city) => (
 							<Card
 								key={`${city.name + Math.random()}`}
 								name={`${city.name}`}
