@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react"
 import Card from "../Cards"
-import { allCities } from "../../services/Events"
 import { useDispatch, useSelector } from "react-redux"
 import citiesActions from "../../redux/actions/cities_action"
-import axios from "axios"
 
 export default function Trends() {
 	const [index, setIndex] = useState(0)
-	const dipatch = useDispatch()
+	const dispatch = useDispatch()
 	const cities_reducer = useSelector((state) => state.cities_reducer).cities.slice(index, index + 4);
 
 	const fetchData = async () => {
-		try {
-			axios.get("http://localhost:3000/api/dbCities")
-			.then((res) => {
-				dipatch(citiesActions.add_city(res.data))
-			})
-		} catch (error) {
-			console.log(error)
-		}
+		dispatch(citiesActions.get_cities())
 	}
 
 	useEffect(() => {

@@ -1,50 +1,37 @@
 import React from "react"
 import Card from "../Cards"
-import { useState, useEffect } from "react"
+import {useEffect } from "react"
 import getCity from "../../services/Event.js"
-import {allCities} from "../../services/Events.js"
 import ErrorCard from "../ErrorCard"
 //Imports para redux
-import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import filterActions from "../../redux/actions/filter_action"
 import citiesActions from "../../redux/actions/cities_action"
 
 export default function Search() {
-	const dipatch = useDispatch()
+	const dispatch = useDispatch()
 	const cities_reducer = useSelector((state) => state.cities_reducer.cities);
 	const filter_reducer = useSelector((state) => state.filter_reducer.filter);
 
 	const fetchData = async () => {
-		try {
-			if(filter_reducer.length != ""){
-				const fetchedCity = await getCity(filter_reducer)
-				dipatch(citiesActions.add_city({cities:fetchedCity}))
-			}else{
-				try {
-					axios.get("http://localhost:3000/api/dbCities")
-					.then((res) => {
-						dipatch(citiesActions.add_city(res.data))
-					})
-				} catch (error) {
-					console.log(error)
-				}
-
-			}
-		} catch (error) {
-			console.log(error)
+		if(!filter_reducer == ""){
+			const fetchedCity = await getCity(filter_reducer)
+			dispatch(citiesActions.add_city({cities:fetchedCity}))
+		}else{
+			dispatch(citiesActions.get_cities())
+			console.log(cities_reducer);
 		}
 	}
 
-	useEffect(() => {
-		fetchData()
+	useEffect(() => {	
+		dispatch(filterActions.modify_filter(""))
 	}, [])
 
 	const handleInput = () => {
 		const search_input = document.getElementById("city-search")
 		const input_value = search_input.value
 		const value_without_space = input_value.toLowerCase().replace(/\s/g, "")
-		dipatch(filterActions.modify_filter(value_without_space))
+		dispatch(filterActions.modify_filter(value_without_space))
 	}
 
 	useEffect(() => {
