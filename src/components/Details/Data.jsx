@@ -20,7 +20,6 @@ export default function Data(){
 		fetchData()
 	},[])
 
-
 	return (
 		<>
 			<main className="min-h-screen">

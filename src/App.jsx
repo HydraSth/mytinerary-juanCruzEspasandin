@@ -4,6 +4,7 @@ import './assets/tailwind.css'
 import Cities from './Layouts/Cities'
 import Home from './Layouts/Home'
 import Details from './Layouts/Details'
+import Login from './Layouts/Login'
 
 const router = createHashRouter([
   {
@@ -17,6 +18,10 @@ const router = createHashRouter([
   {
     path: '/',
     element: <Home/>
+  },
+  {
+    path: '/login',
+    element: <Login/>
   }
 ])
 function App() {
@@ -26,6 +31,7 @@ function App() {
           <Home/>
           <Details/>
           <Cities/>
+          <Login/>
         </RouterProvider>
     </div>
   )

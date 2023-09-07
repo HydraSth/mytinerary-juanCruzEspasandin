@@ -31,3 +31,35 @@ body{
     width: 80px;
 }
 
+#floriture {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    right: 0;
+}
+  
+  #floriture::before,
+  #floriture::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25%;
+    height: 1px;
+    background-color: #ccc;
+  }
+  
+  #floriture::before {
+    left: 20%;
+  }
+  
+  #floriture::after {
+    right: 20%;
+  }
+  
+
+input:focus-visible {
+    outline: none;
+    text-shadow: none;
+}
