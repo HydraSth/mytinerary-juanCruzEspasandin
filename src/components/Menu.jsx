@@ -2,11 +2,14 @@ import {React,useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/tailwind.css'
 import '../assets/animations.css'
+import { useSelector } from 'react-redux';
+
 export default function Menu (){
     const [display,setDisplay]=useState(false)
     const handleMenu=()=>{
         setDisplay(!display)
     }
+    const log_state=useSelector((state)=>state.user_reducer.logged)
     return(
         <>
             {
@@ -17,10 +20,15 @@ export default function Menu (){
                             <i className="text-lg bi bi-caret-right-fill"></i>
                         </button>
                     </div>
-                    <div className='flex flex-col h-1/4 w-16 text-theme bg-primary rounded-s-full place-content-center place-items-center'>
+                    <div className='flex flex-col h-1/4 w-16 text-theme bg-primary rounded-s-lg place-content-center place-items-center'>
                         <Link to={'/'} className='hover:font-bold'>Home</Link>
                         <Link to={'/cities'} className='hover:font-bold'>Cities</Link>
-                        <Link to={'/login'} className='hover:font-bold'>Login</Link>
+                        {
+                            log_state?
+                            null
+                            :
+                            <Link to={'/login'} className='hover:font-bold'>Login</Link>
+                        }
                     </div>
                 </div>
             :

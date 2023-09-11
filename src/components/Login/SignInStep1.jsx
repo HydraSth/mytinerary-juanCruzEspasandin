@@ -16,7 +16,9 @@ export default function SignStep1(){
         dispatch(loginActions.modify_sign_step(sign_reducer+1))
     }        
     const handleCreateAccount=()=>{
-        dispatch(loginActions.modify_sign(false))
+        // Accion a seguir si toca Create Account
+         
+        // dispatch(loginActions.modify_sign(false))
     }
     const handleEmail=(event)=>{
         dispatch(userActions.modify_login_mail(event.target.value))

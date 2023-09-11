@@ -3,7 +3,7 @@ import loginActions from "../actions/login_action";
 
 const initialState = {
     create_step:1,
-    sign: false,
+    sign: true,
     sign_step:1
 }
 

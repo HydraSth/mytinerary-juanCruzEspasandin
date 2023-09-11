@@ -23,9 +23,6 @@ export default function Form(){
                 <Button/>
                 {
                     log_err_msg?
-                        log_err_msg=="User logged in"?
-                        <h5 className='text-sm bg-green-300 text-black/60 shadow-md px-2 rounded-sm'>{log_err_msg}</h5>
-                        :
                         <h5 className='text-sm bg-rose-300 text-black/60 shadow-md px-2 rounded-sm'>{log_err_msg}</h5>
                     :
                     null

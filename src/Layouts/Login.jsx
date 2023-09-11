@@ -5,6 +5,7 @@ import Form from '../components/Login/CreateAccount.jsx'
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 export default function Login(){
+  const log_state=useSelector((state)=>state.user_reducer.logged)
   const cities_reducer = useSelector((state) => state.cities_reducer.cities);
   const [bgImg, setBgImg] = useState("https://arc-anglerfish-arc2-prod-artear.s3.amazonaws.com/public/FPSPLRS3U7MKJL6G6UI24DPANU.jpg")
   useEffect(() => {
@@ -13,6 +14,12 @@ export default function Login(){
       setBgImg(random_img)
     }
   },[cities_reducer])
+
+  useEffect(() => {
+    if(log_state){
+      window.location.href=("/")
+    } 
+  },[])
 
   return (
     <>

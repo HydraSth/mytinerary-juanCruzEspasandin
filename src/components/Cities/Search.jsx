@@ -19,7 +19,6 @@ export default function Search() {
 			dispatch(citiesActions.add_city({cities:fetchedCity}))
 		}else{
 			dispatch(citiesActions.get_cities())
-			console.log(cities_reducer);
 		}
 	}
 
