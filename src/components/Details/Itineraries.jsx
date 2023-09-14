@@ -4,17 +4,32 @@ import getIntineraries from "../../services/Itinerary"
 import Itinerary from "./Itinerary"
 import EmptyItinerary from "./EmptyItinerary"
 import NotLogged from "./NotLogged"
+import axios from "axios"
 
 export default function Itineraries({cityName}) {
     const [itineraries, setItineraries] = useState([])
 
     const fetchData = async () => {
 		try {
-			const res_itineraries = await getIntineraries(cityName)
-            
-			if(res_itineraries){
-                setItineraries(res_itineraries)
-            }
+            let token=  localStorage.getItem('token')
+            const config = {
+                method: 'get',
+                url: `http://localhost:3000/api/cityItineraries?name=${cityName}`,
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+            };
+
+            axios(config)
+                .then((response) => {
+                    // La respuesta exitosa se encuentra en la variable 'response.data'
+                    setItineraries(response.data.itineraries)
+                })
+                .catch((error) => {
+                    // Maneja errores, como respuestas 401 (No autorizado) o errores de red
+                    console.error('Error:', error);
+                });
+
 		} catch (error) {
             console.log(error)
 		}
@@ -22,7 +37,7 @@ export default function Itineraries({cityName}) {
 
     useEffect(() => {
         fetchData()
-	})
+	},[])
     
 	return (
         <>
