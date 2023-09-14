@@ -1,27 +1,34 @@
 import { createReducer } from "@reduxjs/toolkit";
-import userActions from "../actions/user_actions";
+import registerActions from "../actions/register_action";
 
-const registerState = {
-    register_mail:"",
-    register_error_message:"",
-    register_password:"",
+const initialState = {
+    email:"",
+    password:"",
+    error:""
 }
 
-const userRegisterReducer = createReducer(registerState, (builder)=>{
+const registerReducer = createReducer(initialState, (builder)=>{
     return(
-    builder.addCase(userActions.modify_login_error_message , (state, action)=>{
-        return{
-            ...state, 
-            login_error_message: action.payload
-        }
-    }),
-    builder.addCase(userActions.modify_login_password , (state, action)=>{
-        return{
-            ...state, 
-            login_password: action.payload
-        }
-    })
+        builder.addCase(registerActions.change_email, (state, action)=>{
+            return{
+                ...state, 
+                email: action.payload
+            }
+        }),
+        builder.addCase(registerActions.change_password , (state, action)=>{
+            return{
+                ...state, 
+                password: action.payload
+            }
+        }),
+        builder.addCase(registerActions.change_error , (state, action)=>{
+            return{
+                ...state,
+                error:action.payload
+            }
+        })
     )
 })
 
-export {userRegisterReducer}
+
+export {registerReducer}

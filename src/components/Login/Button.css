@@ -40,8 +40,7 @@ html {
   }
   
   .rocker-small {
-    font-size: 0.75em; /* Sizes the switch */
-    margin: 1em;
+    font-size: 0.75em;
   }
   
   .rocker::before {

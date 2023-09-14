@@ -27,22 +27,35 @@ export default function SignStep2(){
               'Content-Type': 'application/json'
             }
         }).then(res => {
-            console.log(res.data);
+            const localState={
+                logged:true,
+                login_mail:mail_reducer,
+                login_id:res.data.user.id
+            }
+            localStorage.setItem('reduxState', JSON.stringify(localState));
+            localStorage.setItem('token', res.data.token);
             dispatch(userActions.modify_logged(true))
-        }).catch(err => {
+        }).catch(err => {   
             dispatch(userActions.modify_login_error_message(err.response.data.message))
         })
     }    
 
     useEffect(() => {
         if(log_state){
-          window.location.href=("/")
+            window.location.href=("/");
         }
     })
 
     const handlePasswordChange=(e)=>{
         dispatch(userActions.modify_login_password(e.target.value))
         dispatch(userActions.modify_login_error_message(""))
+    }
+
+    const handleEnter=(e)=>{
+        if(e.key=="Enter"){
+            e.preventDefault()
+            handleFinish()
+        }
     }
 
     return(
@@ -60,7 +73,7 @@ export default function SignStep2(){
                 </span>
            </section>
             <form className='flex flex-col gap-3'>
-                 <input type="password" onChange={handlePasswordChange} onKeyDown={(e)=>e.key=="Enter"?handleFinish():null} value={password_reducer} autoComplete='off' className='border-b text-inverse-theme/75 border-primary text-sm pb-4' placeholder="Password"/>
+                 <input type="password" onChange={handlePasswordChange} onKeyDown={(e)=>handleEnter(e)} value={password_reducer} autoComplete='off' className='border-b text-inverse-theme/75 border-primary text-sm pb-4' placeholder="Password"/>
             </form>
                 <div className='flex place-content-between'>
 						<button

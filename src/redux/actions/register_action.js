@@ -1,16 +1,22 @@
 import { createAction } from "@reduxjs/toolkit";
 
-// const modify_email = createAction("modify_email", (payload) => {
-//     return {
-//         payload: payload,
-//     }
-// });
-// const modify_email = createAction("modify_email", (payload) => {
-//     return {
-//         payload: payload,
-//     }
-// });
+const change_email = createAction("change_email", (payload) => {
+    return {
+        payload: payload,
+    }
+});
+const change_password = createAction("change_password", (payload) => {
+    return {
+        payload: payload,
+    }
+});
 
-const loginActions={modify_email}
+const change_error = createAction("change_error", (payload) => {
+    return {
+        payload: payload,
+    }
+});
 
-export default loginActions;
+const registerActions={change_email,change_password,change_error}
+
+export default registerActions;

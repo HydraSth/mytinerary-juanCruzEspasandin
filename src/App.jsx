@@ -5,6 +5,9 @@ import Cities from './Layouts/Cities'
 import Home from './Layouts/Home'
 import Details from './Layouts/Details'
 import Login from './Layouts/Login'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import userActions from './redux/actions/user_actions'
 
 const router = createHashRouter([
   {
@@ -24,7 +27,12 @@ const router = createHashRouter([
     element: <Login/>
   }
 ])
+
 function App() {
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(userActions.authenticate())
+  },[])
   return (
     <div className=' flex flex-col min-h-screen place-content-between bg-secondary'>
         <RouterProvider router={router}>

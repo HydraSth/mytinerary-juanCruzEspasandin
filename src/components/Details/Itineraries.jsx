@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import getIntineraries from "../../services/Itinerary"
 import Itinerary from "./Itinerary"
 import EmptyItinerary from "./EmptyItinerary"
+import NotLogged from "./NotLogged"
 
 export default function Itineraries({cityName}) {
     const [itineraries, setItineraries] = useState([])
@@ -10,7 +11,10 @@ export default function Itineraries({cityName}) {
     const fetchData = async () => {
 		try {
 			const res_itineraries = await getIntineraries(cityName)
-			setItineraries(res_itineraries)
+            
+			if(res_itineraries){
+                setItineraries(res_itineraries)
+            }
 		} catch (error) {
             console.log(error)
 		}
@@ -18,17 +22,20 @@ export default function Itineraries({cityName}) {
 
     useEffect(() => {
         fetchData()
-	},[])
+	})
     
 	return (
         <>
-            {
-                itineraries.length == 0 ?
-                    <EmptyItinerary/>
+            { 
+                localStorage.getItem('token')?
+                    itineraries.length == 0 ?
+                        <EmptyItinerary/>
+                    :
+                        itineraries.map(itinerary => (
+                            <Itinerary key={itinerary._id} itinerary={itinerary} />
+                        ))
                 :
-                itineraries.map(itinerary => (
-                    <Itinerary key={itinerary._id} itinerary={itinerary} />
-                ))
+                <NotLogged/>
             }
         </>
     )

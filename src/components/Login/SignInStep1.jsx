@@ -2,8 +2,10 @@ import {React} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import loginActions from '../../redux/actions/login_action';
 import userActions from '../../redux/actions/user_actions';
-import { Link } from 'react-router-dom';
-
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { GoogleLogin } from '@react-oauth/google'
 
 export default function SignStep1(){
     const dispatch= useDispatch()
@@ -25,6 +27,46 @@ export default function SignStep1(){
         dispatch(userActions.modify_login_error_message(""))
     }
 
+    //Google SignIn
+    const signUpGoogle=(credentialResponse)=>{
+        const decoded=jwtDecode(credentialResponse.credential)
+        const user_obj={
+            email: decoded.email,
+            password: `${decoded.sub}${decoded.name}`,
+        }
+    
+        axios.post('http://localhost:3000/api/auth/signIn', user_obj, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                html: 'Redirecting to home',
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                },
+            }).then(() => {
+                window.location.href = '/'
+                const localState={
+                    logged:true,
+                }
+                localStorage.setItem('reduxState', JSON.stringify(localState));
+                localStorage.setItem('token', res.data.token);
+            })	
+        }).catch(err => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${err.response.data.message}`,
+            })
+        })
+        
+    }
+
     return(
         <>
         <section className='w-2/3'>
@@ -37,11 +79,15 @@ export default function SignStep1(){
                 <input required onChange={handleEmail} value={mail_reducer} type="email" className='border-b text-inverse-theme/75 border-primary text-sm pb-4' placeholder="Email" />
                 <button type='submit' onClick={()=>handleClick()} className='bg-primary text-white py-2 px-4 rounded-md mt-10 w-1/3 self-end text-sm'>Continue</button>
             </form>
-            <div className='flex flex-col gap-3 mt-10'>
-                <Link className='hover:scale-105 transition duration-300 hover:bg-gray-200 flex flex-row w-full rounded-full place-content-center items-center bg-gray-50 shadow-md'>
-                    <img className='w-5 py-4' src={"./public/assets/google_ico.png"} alt="" />
-                    <h5 className='ps-3 text-sm text-inverse-theme/80'>Continue with Google</h5>
-                </Link>
+            <div className='flex flex-col place-items-center gap-3 mt-10'>
+                <GoogleLogin
+                onSuccess={credentialResponse => {
+                    signUpGoogle(credentialResponse);
+                }}
+                onError={() => {
+                    console.log('Login Failed');
+                }}
+                />
             </div>
         </section>
         </>

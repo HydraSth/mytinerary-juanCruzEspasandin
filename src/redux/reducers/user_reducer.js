@@ -8,6 +8,7 @@ const loginState = localStorage.getItem('reduxState')
     login_mail:"",
     login_error_message:"",
     login_password:"",
+    user_id:0
     }
 
 const userReducer = createReducer(loginState, (builder)=>{
@@ -19,12 +20,10 @@ const userReducer = createReducer(loginState, (builder)=>{
         }
     }),
     builder.addCase(userActions.modify_logged , (state, action)=>{
-        const newState={
+        return{
             ...state, 
             logged: action.payload,
         }
-        localStorage.setItem('reduxState', JSON.stringify(newState));
-        return newState;
     }),
     builder.addCase(userActions.modify_login_mail , (state, action)=>{
         return{
@@ -36,6 +35,12 @@ const userReducer = createReducer(loginState, (builder)=>{
         return{
             ...state, 
             login_password: action.payload
+        }
+    }),
+    builder.addCase(userActions.authenticate , (state, action)=>{
+        return{ 
+            ...state,
+            user_id:action.payload
         }
     })
     )
