@@ -21,18 +21,14 @@ export default function Step2(){
 			Swal.fire({
 				icon: 'success',
 				title: 'Success!',
-				html: 'Redirecting to home',
+				html: 'Redirecting to signin',
 				timer: 1500,
 				timerProgressBar: true,
 				didOpen: () => {
 					Swal.showLoading()
 				},
 			}).then(() => {
-				window.location.href = '/'
-				const localState={
-					logged:true
-				}
-				localStorage.setItem('reduxState', JSON.stringify(localState));
+				window.location.href = '/mytinerary-juanCruzEspasandin/l#/login'
 			})	
 		}).catch(err => {
 			Swal.fire({
