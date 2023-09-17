@@ -4,6 +4,7 @@ import loginActions from '../../redux/actions/login_action';
 import userActions from '../../redux/actions/user_actions';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 export default function SignStep2(){
@@ -35,9 +36,13 @@ export default function SignStep2(){
             localStorage.setItem('reduxState', JSON.stringify(localState));
             localStorage.setItem('token', res.data.token);
             dispatch(userActions.modify_logged(true))
-        }).catch(err => {   
-            dispatch(userActions.modify_login_error_message(err.response.data.message))
-        })
+        }).catch(err => {
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: `${err.response.data.message}`,
+			})
+		})
     }    
 
     useEffect(() => {

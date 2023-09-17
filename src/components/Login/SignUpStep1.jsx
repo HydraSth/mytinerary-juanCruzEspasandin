@@ -2,6 +2,7 @@ import {React} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import loginActions from '../../redux/actions/login_action';
 import register_actions from '../../redux/actions/register_action';
+import userActions from '../../redux/actions/user_actions';
 import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
@@ -33,18 +34,22 @@ export default function Step1(){
 			  'Content-Type': 'application/json'
 			}
         }).then(res => {
-            console.log(res);
             Swal.fire({
 				icon: 'success',
 				title: 'Success!',
-				html: 'Redirecting to signin',
+				html: 'Redirecting to home',
 				timer: 1500,
 				timerProgressBar: true,
 				didOpen: () => {
 					Swal.showLoading()
 				},
 			}).then(() => {
-				window.location.href = '/mytinerary-juanCruzEspasandin/l#/login'
+                localStorage.setItem('token', res.data.token);
+                const localState={
+                    logged:true,
+                }
+                localStorage.setItem('reduxState', JSON.stringify(localState));
+				window.location.href = '/'
 			})	
 		}).catch(err => {
 			Swal.fire({
