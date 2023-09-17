@@ -13,7 +13,7 @@ export default function Step2(){
     }    
 	const handleFinish = () => {
       	let body_info = localStorage.getItem('user_register');
-		axios.post('http://localhost:3000/api/auth/signUp', body_info, {
+		axios.post('https://mytinerary.up.railway.app/api/auth/signUp', body_info, {
 			headers: {
 			  'Content-Type': 'application/json'
 			}

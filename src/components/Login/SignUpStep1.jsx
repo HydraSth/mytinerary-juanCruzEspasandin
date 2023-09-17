@@ -29,7 +29,7 @@ export default function Step1(){
             country:"Undefined",
             mail_contact:false	
         }
-        axios.post('http://localhost:3000/api/auth/signUp', user_obj, {
+        axios.post('https://mytinerary.up.railway.app/api/auth/signUp', user_obj, {
 			headers: {
 			  'Content-Type': 'application/json'
 			}

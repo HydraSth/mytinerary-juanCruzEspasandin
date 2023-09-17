@@ -35,7 +35,7 @@ export default function SignStep1(){
             password: `${decoded.sub}${decoded.name}`,
         }
     
-        axios.post('http://localhost:3000/api/auth/signIn', user_obj, {
+        axios.post('https://mytinerary.up.railway.app/api/auth/signIn', user_obj, {
             headers: {
                 'Content-Type': 'application/json'
             }

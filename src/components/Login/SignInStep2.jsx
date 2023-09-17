@@ -17,7 +17,7 @@ export default function SignStep2(){
         dispatch(loginActions.modify_sign_step(sign_reducer-1))
     }    
     const handleFinish=()=>{
-        const url='http://localhost:3000/api/auth/signIn';
+        const url='https://mytinerary.up.railway.app/api/auth/signIn';
         
         const data={
             email:`${mail_reducer}`,
