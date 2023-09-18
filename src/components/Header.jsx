@@ -6,11 +6,16 @@ function Header (){
   return(
     <>
       <header id="Header" className='sm:bg-theme h-12 z-10 py-3 absolute end-0 sm:relative sm:flex'>
-        <div className='flex place-content-end sm:hidden'>
-            <button onClick={()=>{localStorage.clear();window.location.reload()}} className=' font-semibold rounded-md px-5 z-10 py-3 bg-white mx-2 text-rose-400'>
-                 Logout
-            </button>
-        </div>
+        {
+          isLoged?
+            <div className='flex place-content-end sm:hidden'>
+              <button onClick={()=>{localStorage.clear();window.location.reload()}} className=' font-semibold rounded-md px-5 z-10 py-3 bg-white mx-2 text-rose-400'>
+                  Logout
+              </button>
+            </div>
+          :
+            null
+        }
         <div className='w-full hidden sm:flex place-items-center place-content-around text-inverse-theme'> 
           <img id="Logo" src="assets/fav_ico.png" className='h-full max-w-xs object-contain'/>
           <section className='text-sm'>

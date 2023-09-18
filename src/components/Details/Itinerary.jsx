@@ -38,7 +38,7 @@ export default function Itinerary({itinerary}) {
 					</section>
 				</div>
 				<div className="flex w-full">
-					<article className="w-full sm:w-1/2 flex flex-col flex-wrap pt-2 p-2  place-content-center place-items-center">
+					<article className="w-full sm:w-1/2 flex flex-col flex-wrap pt-2 p-2 sm:place-content-center sm:place-items-center">
 						<h2 className="font-semi-bold">{itinerary.name}</h2>
 						<h3 className="font-medium opacity-40">
 							{itinerary.author}
