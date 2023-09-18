@@ -9,7 +9,7 @@ export default function Menu (){
     const handleMenu=()=>{
         setDisplay(!display)
     }
-    const log_state=useSelector((state)=>state.user_reducer.logged)
+    const isLoged=useSelector((state)=>state.user_reducer.logged)
     return(
         <>
             {
@@ -24,10 +24,12 @@ export default function Menu (){
                         <Link to={'/'} className='hover:font-bold'>Home</Link>
                         <Link to={'/cities'} className='hover:font-bold'>Cities</Link>
                         {
-                            log_state?
-                            null
+                            isLoged?
+                                null
                             :
-                            <Link to={'/login'} className='hover:font-bold'>Login</Link>
+                                <Link to={'/login'}>
+                                Login
+                                </Link>
                         }
                     </div>
                 </div>

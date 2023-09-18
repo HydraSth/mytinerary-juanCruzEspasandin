@@ -5,7 +5,7 @@ export default function Info (){
 
   return(
     <>
-      <div id="info" className='flex flex-col md:flex-row place-content-center place-items-center mb-10 w-10/12 mx-auto mt-5 text-theme'>
+      <div id="info" className='flex flex-col md:flex-row place-content-center pt-10 place-items-center mb-10 w-10/12 mx-auto mt-5 text-theme'>
           <section className='md:mx-1 w-4/5 flex flex-col md:place-items-start place-items-center  md:w-1/2 lg:w-2/3 '>
             <h1 className='text-4xl md:text-5xl font-bold drop-shadow-lg w-10/12'>Find the perfect destination</h1>
             <p className='text-lg text-justify font-medium mb-3 drop-shadow-lg w-10/12'>Our app will help you find the perfect path for your next trip. With an easy to use interface and a host of itinerary options, planning your next trip has never been easier.</p>
