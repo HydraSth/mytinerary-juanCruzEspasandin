@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import loginActions from '../../redux/actions/login_action';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import userActions from '../../redux/actions/user_actions';
-
+import { PostBody } from '../../services/LoginRequest';
 export default function Step2(){
     const dispatch= useDispatch()
 
@@ -13,35 +12,7 @@ export default function Step2(){
     }    
 	const handleFinish = () => {
       	let body_info = localStorage.getItem('user_register');
-		axios.post('https://mytinerary.up.railway.app/api/auth/signUp', body_info, {
-			headers: {
-			  'Content-Type': 'application/json'
-			}
-		}).then(res => {
-			Swal.fire({
-				icon: 'success',
-				title: 'Success!',
-				html: 'Redirecting to home',
-				timer: 1500,
-				timerProgressBar: true,
-				didOpen: () => {
-					Swal.showLoading()
-				},
-			}).then(() => {
-                localStorage.setItem('token', res.data.token);
-                const localState={
-                    logged:true,
-                }
-                localStorage.setItem('reduxState', JSON.stringify(localState));
-				window.location.href = '/'
-			})	
-		}).catch(err => {
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: `${err.response.data.message}`,
-			})
-		})
+		PostBody('https://mytinerary.up.railway.app/api/auth/signUp', body_info)
 	};
 	  	  
 	let register_email=useSelector((state)=>state.register_reducer.email)

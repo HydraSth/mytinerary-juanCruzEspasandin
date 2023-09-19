@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { GoogleLogin } from '@react-oauth/google'
+import { PostBody } from '../../services/LoginRequest';
 
 export default function SignStep1(){
     const dispatch= useDispatch()
@@ -34,37 +35,7 @@ export default function SignStep1(){
             email: decoded.email,
             password: `${decoded.sub}${decoded.name}`,
         }
-    
-        axios.post('https://mytinerary.up.railway.app/api/auth/signIn', user_obj, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                html: 'Redirecting to home',
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                },
-            }).then(() => {
-                window.location.href = '/'
-                const localState={
-                    logged:true,
-                }
-                localStorage.setItem('reduxState', JSON.stringify(localState));
-                localStorage.setItem('token', res.data.token);
-            })	
-        }).catch(err => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `${err.response.data.message}`,
-            })
-        })
-        
+        PostBody('https://mytinerary.up.railway.app/api/auth/signIn', user_obj)
     }
 
     return(

@@ -5,6 +5,7 @@ import userActions from '../../redux/actions/user_actions';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { PostBody } from '../../services/LoginRequest';
 
 
 export default function SignStep2(){
@@ -17,32 +18,11 @@ export default function SignStep2(){
         dispatch(loginActions.modify_sign_step(sign_reducer-1))
     }    
     const handleFinish=()=>{
-        const url='https://mytinerary.up.railway.app/api/auth/signIn';
-        
         const data={
             email:`${mail_reducer}`,
             password:`${password_reducer}`
         }
-        axios.post(url, data, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            const localState={
-                logged:true,
-                login_mail:mail_reducer,
-                login_id:res.data.user.id
-            }
-            localStorage.setItem('reduxState', JSON.stringify(localState));
-            localStorage.setItem('token', res.data.token);
-            dispatch(userActions.modify_logged(true))
-        }).catch(err => {
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: `${err.response.data.message}`,
-			})
-		})
+        PostBody('https://mytinerary.up.railway.app/api/auth/signIn', data)
     }    
 
     useEffect(() => {

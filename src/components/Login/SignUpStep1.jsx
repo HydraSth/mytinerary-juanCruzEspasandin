@@ -2,11 +2,9 @@ import {React} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import loginActions from '../../redux/actions/login_action';
 import register_actions from '../../redux/actions/register_action';
-import userActions from '../../redux/actions/user_actions';
 import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { PostBody } from '../../services/LoginRequest';
 
 export default function Step1(){
     const dispatch= useDispatch()
@@ -29,36 +27,7 @@ export default function Step1(){
             country:"Undefined",
             mail_contact:false	
         }
-        axios.post('https://mytinerary.up.railway.app/api/auth/signUp', user_obj, {
-			headers: {
-			  'Content-Type': 'application/json'
-			}
-        }).then(res => {
-            Swal.fire({
-				icon: 'success',
-				title: 'Success!',
-				html: 'Redirecting to home',
-				timer: 1500,
-				timerProgressBar: true,
-				didOpen: () => {
-					Swal.showLoading()
-				},
-			}).then(() => {
-                localStorage.setItem('token', res.data.token);
-                const localState={
-                    logged:true,
-                }
-                localStorage.setItem('reduxState', JSON.stringify(localState));
-				window.location.href = '/'
-			})	
-		}).catch(err => {
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: `${err.response.data.message}`,
-			})
-		})
-
+        PostBody('https://mytinerary.up.railway.app/api/auth/signUp', user_obj);
     }
 
     let register_email=useSelector((state)=>state.register_reducer.email)
