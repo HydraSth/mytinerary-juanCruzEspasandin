@@ -20,7 +20,7 @@ export default function Step1(){
         const decoded=jwtDecode(credentialResponse.credential)
         const user_obj={
             name: decoded.name,
-            lastName: decoded.family_name,
+            lastName: decoded.family_name??decoded.name,
             email: decoded.email,
             password: `${decoded.sub}${decoded.name}`,
             month_birth:"1",
