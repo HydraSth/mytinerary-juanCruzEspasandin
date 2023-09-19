@@ -8,11 +8,19 @@ import { PostBody } from '../../services/LoginRequest';
 
 export default function Step1(){
     const dispatch= useDispatch()
+    const sign_reducer= useSelector((state)=>state.login_reducer.sign)
     const login_reducer = useSelector((state)=>state.login_reducer.create_step)
 
     const handleClick=()=>{
         dispatch(loginActions.modify_create_step(login_reducer+1))
     }    
+
+    const changeSignIn=()=>{
+        sign_reducer == false?
+        dispatch(loginActions.modify_sign(true))
+        : 
+        dispatch(loginActions.modify_sign(false))
+    }
 
     const signUpGoogle=(credentialResponse)=>{
         const decoded=jwtDecode(credentialResponse.credential)
@@ -58,7 +66,9 @@ export default function Step1(){
         <h6 id="floriture" className='my-5 w-full text-inverse-theme/40'>O</h6>
         <section className='flex flex-col w-2/3'>
             <h3 className='text-sm font-medium'>Sign up with email</h3>
-            <h4 className='text-sm mb-4'>Already have an account?<a className='text-primary'> Sign in</a></h4>
+            <h4 className='text-sm mb-4'>Already have an account?
+                <button onClick={()=>changeSignIn()} className='text-primary'> Sign in</button>
+            </h4>
             <form className='flex flex-col gap-3'>
                 <input type="email" onChange={handleChangeEmail} value={register_email} className='border-b text-inverse-theme/75 border-primary text-sm pb-4' placeholder="Email" />
                 <input type="password" onChange={handleChangePassword} value={register_password} autoComplete='off' className='border-b text-inverse-theme/75 border-primary text-sm pb-4' placeholder="Password"/>

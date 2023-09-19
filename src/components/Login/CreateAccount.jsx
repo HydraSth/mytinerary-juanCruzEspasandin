@@ -19,7 +19,7 @@ export default function Form(){
             <Link className="sm:hidden absolute z-20 shadow-md left-5 place-items-center transition-all duration-300 p-2 top-3 rounded-md text-center hover:bg-primary hover:text-theme bg-theme" to={'/'}>
 				<i className="bi bi-arrow-left-short"/>
 			</Link>
-            <div className="bg-theme rounded-md flex flex-col place-content-center items-center h-4/5 w-11/12 mt-16 sm:w-1/2 sm:mt-0 sm:self-end sm:me-10 lg:w-1/3 self-center">
+            <div className="bg-theme rounded-md flex flex-col place-content-center items-center min-h-[80%] py-5 w-11/12 mt-16 sm:w-1/2 sm:my-5 sm:self-end sm:me-10 lg:w-1/3 self-center">
                 <Button/>
                 {
                     log_err_msg?

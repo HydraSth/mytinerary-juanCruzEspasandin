@@ -184,13 +184,13 @@ export default function Step2(){
 					<div className='flex h-12 place-content-between'>
 						<button
 							onClick={() => handlePrevClick()}
-							className="border-primary border hover:bg-primary hover:text-theme transition-colors duration-300 text-primary py-2 px-4 rounded-md mt-12 w-1/3 self-end text-sm"
+							className="border-primary border hover:bg-primary hover:text-theme transition-colors duration-300 text-primary py-2 px-4 rounded-md mt-12 w-30 self-end text-sm"
 						>
 							Previous
 						</button>
 						<button
 							onClick={() => handleFinish()}
-							className="bg-primary text-white py-2 px-4 rounded-md mt-12 w-1/3 self-end text-sm"
+							className="bg-primary text-white py-2 px-4 rounded-md mt-12 w-30 self-end text-sm"
 						>
 							Continue
 						</button>

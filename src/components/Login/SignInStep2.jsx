@@ -74,12 +74,6 @@ export default function SignStep2(){
 							Continue
 						</button>
 					</div>
-            <div className='flex flex-col gap-3 mt-10'>
-                <Link className='hover:scale-105 transition duration-300 hover:bg-gray-200 flex flex-row w-full rounded-full place-content-center items-center bg-gray-50 shadow-md'>
-                    <img className='w-5 py-4' src={"./public/assets/google_ico.png"} alt="" />
-                    <h5 className='ps-3 text-sm text-inverse-theme/80'>Continue with Google</h5>
-                </Link>
-            </div>
         </section>
         </>
     )
