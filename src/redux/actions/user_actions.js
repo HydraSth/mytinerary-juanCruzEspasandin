@@ -25,7 +25,7 @@ const modify_login_error_message = createAction("modify_login_error_message", (p
 const authenticate= createAsyncThunk("authenticate", async() => {
     try{
         let token=  localStorage.getItem('token')
-        let user=axios.post('https://mytinerary.up.railway.app/ /api/auth/authenticate', null, {
+        let user=axios.post('https://mytinerary.up.railway.app/api/auth/authenticate', null, {
             headers:{
                 'Authorization': 'Bearer '+ token
             }

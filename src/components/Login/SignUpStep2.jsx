@@ -17,7 +17,7 @@ export default function Step2(){
 				...body_info
 			}
 		]		
-		PostBody('https://mytinerary.up.railway.app/ /api/auth/signUp', body_info)
+		PostBody('https://mytinerary.up.railway.app/api/auth/signUp', body_info)
 	};
 	  	  
 	let register_email=useSelector((state)=>state.register_reducer.email)
