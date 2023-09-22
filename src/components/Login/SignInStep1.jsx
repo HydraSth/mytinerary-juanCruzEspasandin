@@ -36,7 +36,7 @@ export default function SignStep1(){
             email: decoded.email,
             password: `${decoded.sub}${decoded.name}`,
         }
-        PostBody('http://localhost:3000/api/auth/signIn', user_obj)
+        PostBody('https://mytinerary.up.railway.app /api/auth/signIn', user_obj)
     }
 
     return(

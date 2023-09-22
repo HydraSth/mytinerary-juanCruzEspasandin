@@ -34,7 +34,7 @@ export default function Step1(){
             country:"Undefined",
             mail_contact:false	
         }
-        PostBody('http://localhost:3000/api/auth/signUp', user_obj);
+        PostBody('https://mytinerary.up.railway.app /api/auth/signUp', user_obj);
     }
 
     let register_email=useSelector((state)=>state.register_reducer.email)

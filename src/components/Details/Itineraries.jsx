@@ -14,7 +14,7 @@ export default function Itineraries({cityName}) {
             let token=  localStorage.getItem('token')
             const config = {
                 method: 'get',
-                url: `http://localhost:3000/api/cityItineraries?name=${cityName}`,
+                url: `https://mytinerary.up.railway.app /api/cityItineraries?name=${cityName}`,
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },

@@ -2,7 +2,7 @@ import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const get_cities = createAsyncThunk("get_cities", async() => {
-    const res_cities= await axios.get("http://localhost:3000/api/dbCities")
+    const res_cities= await axios.get("https://mytinerary.up.railway.app /api/dbCities")
     .then((res) => {
         return res.data.cities;
     })
