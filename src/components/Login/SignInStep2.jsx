@@ -22,7 +22,7 @@ export default function SignStep2(){
             email:`${mail_reducer}`,
             password:`${password_reducer}`
         }
-        PostBody('https://mytinerary.up.railway.app /api/auth/signIn', data)
+        PostBody('https://mytinerary.up.railway.app/ /api/auth/signIn', data)
     }    
 
     useEffect(() => {
