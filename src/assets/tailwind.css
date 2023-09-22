@@ -27,6 +27,16 @@ body{
     }
 }
 
+@media dark-mode {
+    body{
+        background-color: #ccc;
+    }
+
+    button{
+        background-color: #ccc;
+    }
+}
+
 #Logo{
     width: 80px;
 }

@@ -12,7 +12,6 @@ function Footer (){
         <Link className="hover:text-theme mx-1" to="/cities">Policy</Link>
         <Link className="hover:text-theme mx-1" to="/cities">Contact</Link>
       </section>
-      <h6>Another direction in footer, 2034</h6>
     </div>
   )
 }

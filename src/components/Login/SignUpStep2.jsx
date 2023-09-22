@@ -12,7 +12,12 @@ export default function Step2(){
     }    
 	const handleFinish = () => {
       	let body_info = localStorage.getItem('user_register');
-		PostBody('https://mytinerary.up.railway.app/api/auth/signUp', body_info)
+		const obj_user=[
+			{
+				...body_info
+			}
+		]		
+		PostBody('http://localhost:3000/api/auth/signUp', body_info)
 	};
 	  	  
 	let register_email=useSelector((state)=>state.register_reducer.email)

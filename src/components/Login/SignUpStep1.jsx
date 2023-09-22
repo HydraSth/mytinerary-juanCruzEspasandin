@@ -26,7 +26,6 @@ export default function Step1(){
         const decoded=jwtDecode(credentialResponse.credential)
         const user_obj={
             name: decoded.name,
-            lastName: decoded.family_name??decoded.name,
             email: decoded.email,
             password: `${decoded.sub}${decoded.name}`,
             month_birth:"1",
@@ -35,7 +34,7 @@ export default function Step1(){
             country:"Undefined",
             mail_contact:false	
         }
-        PostBody('https://mytinerary.up.railway.app/api/auth/signUp', user_obj);
+        PostBody('http://localhost:3000/api/auth/signUp', user_obj);
     }
 
     let register_email=useSelector((state)=>state.register_reducer.email)
