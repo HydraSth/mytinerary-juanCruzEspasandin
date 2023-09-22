@@ -39,25 +39,25 @@ export default function Search() {
 
 	return (
 		<div className="flex flex-col place-content-center gap-5 align-items-center align-middle">
-			<div className="flex place-content-center">
+			<div className="flex place-content-center mt-5 bg-theme w-45 rounded-lg mx-auto">
 				<button>
 					<i
 						id="icon"
-						className="bi relative start-8 top-1.5 opacity-40 bi-search z-10"
+						className="bi text-dark-primary/70 ps-5 bi-search  z-10"
 					></i>
 				</button>
 				<input
 					autoComplete="off"
 					id="city-search"
 					onChange={() => handleInput()}
-					className="h-10 ps-10 flex my-auto mt-3 drop-shadow-md rounded-lg font-normal"
+					className="h-10 ps-2 flex dark:text-dark-primary/80 my-auto drop-shadow-md rounded-lg font-normal"
 					placeholder="Search your city"
 					type="search"
 				></input>
 			</div>
 			<div
 				id="search-container"
-				className="flex gap-4 h-80 sm:h-auto flex-col sm:flex-row self-center pb-3 sm:w-5/6 overflow-x-scroll"
+				className="flex gap-4 h-96 sm:h-auto flex-col sm:flex-row self-center pb-3 sm:w-5/6 overflow-x-scroll"
 			>
 				{
 					cities_reducer.length == 0 

@@ -26,7 +26,6 @@ export default function Login(){
     <div  style={{ backgroundImage: `url('${bgImg}')` }} className='flex flex-col h-screen place-content-between bg-cover bg-inverse-theme bg-blend-multiply'>
         <Header/>
         <Form/>
-        <Footer/>
     </div>
     </>
   )

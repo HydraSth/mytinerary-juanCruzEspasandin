@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Card({name,photo,country}){
   return(
-        <div style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover',borderRadius:'10px'}} className='sm:w- basis-1/2 drop-shadow-lg md:basis-1/3 lg:basis-0 inline-block'> 
+        <div style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover',borderRadius:'10px'}} className='dark:border-dark-secondary dark:border-2 dark:shadow-dark-secondary/50 dark:shadow-md basis-1/2 drop-shadow-lg md:basis-1/3 lg:basis-0 inline-block'> 
             <div style={{ background:'linear-gradient(180deg, rgba(0,0,0,0.6491596638655462) 0%, rgba(0,0,0,0) 100%)'}} className='rounded-lg flex place-content-between flex-col w-60 h-40'>
               <section className='p-2 ps-3 flex-col'>
                   <h6 className='text-white lg:text-md'>{name}</h6>

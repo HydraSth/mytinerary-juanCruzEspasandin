@@ -3,3 +3,14 @@
 #card h2, h3{
     font-family: 'Outfit', sans-serif;
 }
+
+#deg-bg-hero-search{
+    background:linear-gradient(0deg, rgb(235, 235, 235) 0%, rgba(235, 235, 235, 0) 100%);
+}
+
+
+@media (prefers-color-scheme: dark) {
+    #deg-bg-hero-search{
+        background:linear-gradient(0deg, #080636 0%, rgba(0, 0, 0, 0) 100%);
+    }
+}

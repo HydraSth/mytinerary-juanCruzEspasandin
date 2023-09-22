@@ -34,7 +34,7 @@ function App() {
     dispatch(userActions.authenticate())
   },[])
   return (
-    <div className=' flex flex-col min-h-screen place-content-between bg-secondary'>
+    <div className='flex dark:bg-dark-primary flex-col min-h-screen bg-secondary'>
         <RouterProvider router={router}>
           <Home/>
           <Details/>

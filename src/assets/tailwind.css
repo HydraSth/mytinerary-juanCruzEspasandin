@@ -21,22 +21,6 @@ body{
     overflow-x: hidden;
 }
 
-@media screen and (min-width: 768px) {
-    body{
-        background-color: #090a18;
-    }
-}
-
-@media dark-mode {
-    body{
-        background-color: #ccc;
-    }
-
-    button{
-        background-color: #ccc;
-    }
-}
-
 #Logo{
     width: 80px;
 }

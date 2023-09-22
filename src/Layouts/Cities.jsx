@@ -15,7 +15,6 @@ export default function Cities(){
         <Hero/>
         </div>
         <Search/>
-        <Footer/>
     </>
   )
 }

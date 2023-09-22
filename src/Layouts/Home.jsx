@@ -13,8 +13,10 @@ export default function Home(){
         <Header/>
         <Menu/>
         <Info/>
-        <Trends/>
-        <Footer/>
+        <div>
+          <Trends/>
+          <Footer/>
+        </div>
     </div>
     </>
   )
